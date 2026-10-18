@@ -21,7 +21,8 @@ export async function ensureIndexes(db: Db) {
   await Promise.all([
     db.collection("businesses").createIndex({ id: 1 }, { unique: true }),
     db.collection("creators").createIndex({ id: 1 }, { unique: true }),
-    db.collection("creators").createIndex({ available: 1, niches: 1, serviceAreas: 1 }),
+    db.collection("creators").createIndex({ available: 1, niches: 1 }),
+    db.collection("creators").createIndex({ available: 1, serviceAreas: 1 }),
     db.collection("creators").createIndex({ handle: 1 }),
     db.collection("campaigns").createIndex({ id: 1 }, { unique: true }),
     db.collection("campaigns").createIndex({ businessId: 1, createdAt: -1 }),
