@@ -6,8 +6,8 @@ import { AUDIENCES, CONTENT_TYPES, NICHES } from "@/mocks/data";
 import { draftProposal as templateProposal, parseCampaign as keywordParse } from "@/lib/engine";
 import { checkProposal, wrapUntrusted } from "./safety";
 
-const MODEL = () => process.env.GEMINI_MODEL || "gemini-2.5-flash";
-const TIMEOUT_MS = 8000;
+const MODEL = () => process.env.GEMINI_MODEL || "gemini-3.8-flash";
+const TIMEOUT_MS = 20000;
 let client: GoogleGenAI | null = null;
 export const hasGemini = () => !!process.env.GEMINI_API_KEY;
 const ai = () => (client ??= new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY }));
