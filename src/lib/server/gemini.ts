@@ -65,8 +65,9 @@ ${wrapUntrusted(prompt)}`,
     BRIEF_SCHEMA
   );
   if (!g) return { brief: fallback, source: "heuristic" };
-  const audienceTags = only(g.audienceTags, AUDIENCES);
-  const niches = only(g.niches, NICHES);
+  // Gemini can be conservative with tags, so also keep the ones the keyword rules find in the same sentence.
+  const audienceTags = [...new Set([...only(g.audienceTags, AUDIENCES), ...fallback.audienceTags])];
+  const niches = [...new Set([...only(g.niches, NICHES), ...fallback.niches])];
   const brief: CampaignBrief = {
     title: str(g.title, 60) || fallback.title,
     objective: str(g.objective, 240) || fallback.objective,
