@@ -298,3 +298,24 @@ a { color: inherit; text-decoration: none; }
 .dash-list { display: grid; gap: 12px; }
 .dash-row { display: grid; grid-template-columns: 72px minmax(0, 1fr) auto; gap: 14px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 12px; }
 .dash-row .thumb { width: 72px; height: 72px; border-radius: 16px; overflow: hidden; }
+
+/* ---------- pricing + growth loop ---------- */
+.navlink[aria-current="page"] { color: var(--violet); }
+.price-head { display: grid; gap: 10px; justify-items: center; text-align: center; padding-top: 16px; }
+.plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; align-items: stretch; }
+@media (max-width: 860px) { .plans { grid-template-columns: minmax(0, 1fr); } }
+.plan { align-content: start; grid-template-rows: auto auto auto 1fr auto; }
+.plan.featured { border: 2px solid var(--violet); box-shadow: var(--shadow); }
+.plan-name { justify-self: start; background: var(--tone-soft); color: var(--tone); }
+.plan-price { display: flex; align-items: baseline; gap: 6px; }
+.plan-price b { font-family: var(--display); font-weight: 800; font-size: 50px; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; line-height: 1; }
+.plan-price span { color: var(--muted); font-weight: 700; }
+.plan-perks { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; align-content: start; font-weight: 600; }
+.plan-perks li { display: flex; gap: 10px; align-items: center; }
+.plan-perks .ok { width: 24px; height: 24px; border-radius: 8px; display: grid; place-items: center; flex: none; background: var(--tone-soft); color: var(--tone); }
+.plan .cta, .plan-btn { text-align: center; display: block; }
+.plan-btn { padding: 14px 18px; font-size: 16px; border-radius: 18px; }
+.free-line { font-size: 14px; font-weight: 700; color: var(--green); margin-top: -14px; }
+.refcard { grid-template-columns: minmax(0, 1fr) auto; align-items: center; background: var(--pink-soft); border-color: transparent; }
+@media (max-width: 520px) { .refcard { grid-template-columns: minmax(0, 1fr); } .refcard .btn { justify-self: start; } }
+.refbanner { justify-self: start; background: var(--pink-soft); color: var(--pink); font-weight: 800; font-size: 14px; border-radius: 999px; padding: 8px 16px; }

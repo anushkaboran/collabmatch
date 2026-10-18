@@ -5,6 +5,7 @@ import { api, instagramLoginUrl, session, USE_MOCKS } from "@/lib/api";
 import type { CollaborationView, CollabStatus, Creator } from "@/lib/types";
 import Stage from "@/components/Stage";
 import { ConsentCard, OfferCard, ProfileCard } from "@/components/creator";
+import { CreatorInviteCard } from "@/components/growth";
 import { ErrorBox, Photo, useInterval, useToast } from "@/components/ui";
 
 export default function CreatorPage() {
@@ -66,6 +67,7 @@ export default function CreatorPage() {
             {stage === "join" ? (
               <>
                 <button type="button" className="ig" onClick={connect}><span className="glyph" aria-hidden="true" />Continue with Instagram</button>
+                <span className="free-line">Free for creators. Businesses pay to run campaigns.</span>
                 <span className="tiny">TikTok coming soon{!USE_MOCKS && <> · <button type="button" className="link" onClick={allow}>use a demo profile</button></>}</span>
               </>
             ) : <ConsentCard handle="@maya.eats.sea" busy={stage === "loading"} onAllow={allow} onCancel={() => setStage("join")} />}
@@ -98,6 +100,7 @@ export default function CreatorPage() {
         </section>
       )}
       <ProfileCard c={creator} onRate={async r => { try { setCreator(await api.updateCreator(creator.id, { rate: r, rateType: "quoted" })); toast("Rate saved"); } catch (e) { toast((e as Error).message); } }} />
+      <CreatorInviteCard creatorId={creator.id} />
       {past.length > 0 && <p className="tiny">{past.length} past offer{past.length === 1 ? "" : "s"}</p>}
       <button type="button" className="link" style={{ justifySelf: "center" }} onClick={() => { session.setCreatorId(null); setCreatorId(null); setCreator(null); setStage("join"); }}>Sign out</button>
     </div>

@@ -25,6 +25,7 @@ export default function Header() {
           <Link href="/creator" className="creator" aria-current={isCreator ? "page" : undefined}>I&apos;m a creator</Link>
         </nav>
         {!isCreator && <Link href="/business" className="navlink">My campaigns</Link>}
+        <Link href="/pricing" className="navlink" aria-current={path === "/pricing" ? "page" : undefined}>Pricing</Link>
         <span className="spacer" />
         {USE_MOCKS && <span className="mockbadge" title="Running on sample data in your browser">Demo data</span>}
         <button type="button" className="reset" onClick={reset}>Start over</button>

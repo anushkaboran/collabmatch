@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { api, session } from "@/lib/api";
 import { EXAMPLE_PROMPTS } from "@/mocks/data";
 import Stage from "@/components/Stage";
+import { RefBanner } from "@/components/growth";
 import { Icon, Photo, Spinner, useToast } from "@/components/ui";
 
 const SPOTS = [["/img/cafe4.jpg", "Cafés"], ["/img/food2.jpg", "Restaurants"], ["/img/gym1.jpg", "Studios & gyms"], ["/img/beauty1.jpg", "Beauty & boutiques"]];
@@ -32,6 +33,7 @@ export default function BusinessHome() {
     <div className="wrap">
       <section className="hero">
         <div className="hero-copy">
+          <RefBanner />
           <h1>Every neighborhood spot deserves its crowd.</h1>
           <p className="lead">Tell us what you&apos;re promoting. We&apos;ll find the local creators whose followers are your next regulars, within your budget.</p>
           <form className="ask" onSubmit={e => { e.preventDefault(); run(); }}>
